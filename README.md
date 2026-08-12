@@ -5,7 +5,7 @@ Configuration for Nixos
 ## Setup
 ```bash
 mkdir projects
-git clone ... ~/projects/snow
-sudo nixos-rebuild switch --impure --flake ~/projects/snow
-stow ~/projects/snow/dotfiles
+git clone https://github.com/arjuncgore/snow.git ~/projects/snow
+sudo nixos-rebuild switch --impure --flake ~/projects/snow#snow
+stow -t ~ ~/projects/snow/dotfiles
 ```
