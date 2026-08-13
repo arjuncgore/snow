@@ -105,7 +105,7 @@
         discordo
         spotify
 
-        waywall    
+        osu-lazer
 
         google-chrome
         thunar
