@@ -222,6 +222,12 @@
         XCURSOR_SIZE = "24";
     };
 
+    fileSystems."/mnt/arch" = {
+        device = "/dev/disk/by-uuid/e35e8c96-ad97-415f-afc8-a5bff71a2341";
+        fsType = "ext4";
+        options = [ "nofail" ];
+    };
+
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 }
