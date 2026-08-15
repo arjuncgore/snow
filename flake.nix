@@ -33,6 +33,10 @@
                         mcsrPkgs = mcsr-nixos.packages.x86_64-linux;
                     in {
                         programs.jay.enable = true;
+                        programs.waywall = {
+                            enable = true;
+                            config.source = /home/arjungore/.config/waywall/init.lua;
+                        };
                         environment.systemPackages = [
                             zen-browser.packages.x86_64-linux.default
                             mcsrPkgs.ninjabrain-bot

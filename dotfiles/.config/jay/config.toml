@@ -396,6 +396,7 @@ action = [
 
 [[windows]]
 name = "default"
+match.types = "any"
 action = [
 { type = "set-repeat-rate", rate = { rate = 20, delay = 200 } }
 ]

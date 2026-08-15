@@ -73,7 +73,7 @@
         zip
         unzip
         fastfetch
-        swaylock
+        swaylock-effects
         wofi
         zsh
         zsh-powerlevel10k
@@ -97,8 +97,11 @@
         zoxide
         eza
         bat
+        ripgrep
+        fd
 
         (lib.hiPrio nettools)
+        (lib.hiPrio coreutils)
         toybox
         nodejs
         bash
@@ -133,7 +136,27 @@
         swayimg
         vlc
         mpv
+        chatterino7
 
+        libXtst
+        libXext
+        libX11
+        libxkbcommon
+        libxcb
+        libxt
+        libxinerama
+        jemalloc
+
+        (wrapOBS {
+            plugins = with obs-studio-plugins; [
+                obs-pipewire-audio-capture
+            ];
+        })
+
+        steam
+        openjdk21
+
+        nestopia-ue
 
         # wget
     ];
@@ -182,6 +205,8 @@
     security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
+        audio.enable = true;
+        wireplumber.enable = true;
         alsa = {
             enable = true;
             support32Bit = true;
@@ -240,17 +265,23 @@
         "d /tmp/mc/4 0755 arjungore users -"
     ];
 
-systemd.services.mc-tmpfs-setup = {
-  description = "Set up MCSR tmpfs world folders";
-  after = [ "local-fs.target" ];
-  wantedBy = [ "multi-user.target" ];
-  path = [ pkgs.bash ];
-  serviceConfig = {
-    Type = "oneshot";
-    ExecStart = "/usr/bin/env bash ${./scripts/mcsr-tmpfs.sh}";
-    RemainAfterExit = true;
-  };
-};
+    systemd.services.mc-tmpfs-setup = {
+        description = "Set up MCSR tmpfs world folders";
+        after = [ "local-fs.target" ];
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.bash ];
+        serviceConfig = {
+            Type = "oneshot";
+            ExecStart = "/usr/bin/env bash ${./scripts/mcsr-tmpfs.sh}";
+            RemainAfterExit = true;
+        };
+    };
+
+    environment.etc."libinput/local-overrides.quirks".text = ''
+    [Never Debounce]
+    MatchUdevType=mouse
+    ModelBouncingKeys=1
+    '';
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
