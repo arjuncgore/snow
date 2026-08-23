@@ -1,35 +1,34 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
     imports =
-        [ # Include the results of the hardware scan.
+        [
             /etc/nixos/hardware-configuration.nix
+            ./modules/vm.nix
+            ./modules/display-manager.nix
+            ./modules/guitar.nix
         ];
 
-    # Bootloader.
+    #### System Settings
+    ## Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "snow"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    ## Hostname
+    networking.hostName = "snow";
 
+    ## Networking
+    # networking.wireless.enable = true;
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
     networking.networkmanager.enable = true;
 
-    # Set your time zone.
+    ## Set your time zone.
     time.timeZone = "America/New_York";
 
-    # Select internationalisation properties.
+    ## Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
-
     i18n.extraLocaleSettings = {
         LC_ADDRESS = "en_US.UTF-8";
         LC_IDENTIFICATION = "en_US.UTF-8";
@@ -42,13 +41,13 @@
         LC_TIME = "en_US.UTF-8";
     };
 
-    # Configure keymap in X11
+    ## Configure keymap in X11
     services.xserver.xkb = {
         layout = "us";
         variant = "";
     };
 
-    # Define a user account. Don't forget to set a password with ‘passwd’.
+    ## User Account
     users.users."arjungore" = {
         isNormalUser = true;
         shell = pkgs.zsh;
@@ -57,71 +56,86 @@
         packages = with pkgs; [];
     };
 
-    # Allow unfree packages
+    ## Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
+
+    #### System Packages `nix search ...`
     environment.systemPackages = with pkgs; [
-        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+
+        ## Terminal Utilities
+        vim
         neovim
         tmux
         git
         tree
         stow
-        wezterm
         zip
         unzip
         fastfetch
-        swaylock-effects
-        wofi
         zsh
         zsh-powerlevel10k
-        mako
         yazi
         btop
-        wayland
-        swaybg
-        swayidle
-        i3status-rust
-        adwaita-icon-theme
-        alsa-utils
-        xdg-utils
-
-        grim     
-        wl-clipboard
-        slurp
-        wayfreeze
-        swappy
-
         zoxide
         eza
         bat
         ripgrep
         fd
+        playerctl
 
+        ## Desktop Environment
+        wezterm
+        swaylock-effects
+        wofi
+        mako
+        swaybg
+        swayidle
+        i3status-rust
+        thunar
+
+        ## Dependencies
         (lib.hiPrio nettools)
         (lib.hiPrio coreutils)
         toybox
         nodejs
         bash
-
-        discordo
-        spotify
-
-        osu-lazer-bin
-
-        google-chrome
-        thunar
-        vscode
-        equibop
-        firefox
-
-        playerctl
+        wayland
+        alsa-utils
+        xdg-utils
+        adwaita-icon-theme
+        grim     
+        wl-clipboard
+        slurp
+        wayfreeze
+        swappy
         wireplumber
+        nixd
+        alejandra
+        libXtst
+        libXext
+        libX11
+        libxkbcommon
+        libxcb
+        libxt
+        libxinerama
 
+        ## Applications
+        discordo
+        equibop
+        spotify
+        google-chrome
+        vscode
+        firefox
+        swayimg
+        vlc
+        mpv
+        chatterino7
+        kdePackages.kdenlive
+        (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
+
+        ## Programming
         gcc
-
         rustc
         cargo
         rustfmt
@@ -130,37 +144,19 @@
         pkg-config
         openssl
 
-        nixd
-        alejandra
-
-        swayimg
-        vlc
-        mpv
-        chatterino7
-
-        libXtst
-        libXext
-        libX11
-        libxkbcommon
-        libxcb
-        libxt
-        libxinerama
-        jemalloc
-
-        (wrapOBS {
-            plugins = with obs-studio-plugins; [
-                obs-pipewire-audio-capture
-            ];
-        })
-
+        ## Gaming
         steam
-        openjdk21
-
         nestopia-ue
+        osu-lazer-bin
 
-        # wget
+        jemalloc
+        openjdk21
     ];
 
+
+    #### Other Settings
+
+    ## Zsh Settings
     programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -171,36 +167,16 @@
         '';
     };
 
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-
-    # List services that you want to enable:
-
-    # Enable the OpenSSH daemon.
+    ## Security
+    programs.nix-ld.enable = true;
     services.openssh.enable = true;
-
-    # Open ports in the firewall.
     networking.firewall.allowedTCPPorts = [ 22 ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
 
-    # This value determines the NixOS release from which the default
-    # settings for stateful data, like file locations and database versions
-    # on your system were taken. It‘s perfectly fine and recommended to leave
-    # this value at the release version of the first install of this system.
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "26.05"; # Did you read the comment?
+    ## NixOS Version
+    system.stateVersion = "26.05";
 
+    ## Audio
     services.seatd.enable = true;
-    # services.flatpak.enable = true;
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
@@ -213,16 +189,15 @@
         };
         pulse.enable = true;
     };
-
     hardware.graphics = {
         enable = true;
         enable32Bit = true;
     };
 
-    fonts.packages = with pkgs; [
-        nerd-fonts.meslo-lg
-    ];
+    ## Fonts
+    fonts.packages = with pkgs; [ nerd-fonts.meslo-lg ];
 
+    ## Default Applications
     xdg.mime = {
         enable = true;
         defaultApplications = {
@@ -243,11 +218,14 @@
         };
     };
 
+    ## Cursor
     environment.sessionVariables = {
         XCURSOR_THEME = "Adwaita";
         XCURSOR_SIZE = "24";
     };
 
+    
+    #### Mounted Arch
     fileSystems."/mnt/arch" = {
         device = "/dev/disk/by-uuid/e35e8c96-ad97-415f-afc8-a5bff71a2341";
         fsType = "ext4";
