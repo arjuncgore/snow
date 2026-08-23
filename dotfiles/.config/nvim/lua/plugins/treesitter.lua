@@ -36,6 +36,13 @@ return {
             auto_install = false,
         })
 
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "markdown",
+            callback = function()
+                vim.treesitter.stop()
+            end,
+        })
+
         vim.filetype.add({
             extension = {
                 hbs = "handlebars",
