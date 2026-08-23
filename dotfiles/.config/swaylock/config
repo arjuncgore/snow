@@ -6,7 +6,7 @@ clock
 timestr=%R
 datestr=%a, %e of %B
 
-image=~/projects/snow/assets/space.jpeg
+image=~/projects/snow/assets/photos/space.jpeg
 effect-blur=6x1
 
 indicator

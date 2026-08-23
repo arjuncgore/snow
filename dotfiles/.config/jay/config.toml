@@ -31,7 +31,7 @@ use-hardware-cursor = false
 on-graphics-initialized = [
 # { type = "exec", exec = { prog = "jay", args = ["run-privileged", "waybar", "-c", "/home/arjungore/.config/waybar/config_jay.jsonc", "-s", "/home/arjungore/.config/waybar/style_jay.css"] } },
 { type = "exec", exec = "mako" },
-{ type = "exec", exec = { prog = "swaybg", args = ["--output", "DP-2", "-i", "/home/arjungore/projects/snow/assets/jake.png", "-m", "fill", "--output", "HDMI-A-1", "-i", "/home/arjungore/projects/snow/assets/finn.png", "-m", "fill"], privileged = true } },
+{ type = "exec", exec = { prog = "swaybg", args = ["--output", "DP-2", "-i", "/home/arjungore/projects/snow/assets/photos/jake.png", "-m", "fill", "--output", "HDMI-A-1", "-i", "/home/arjungore/projects/snow/assets/photos/finn.png", "-m", "fill"], privileged = true } },
 { type = "exec", exec = { prog = "swayidle", args = ["-w", "timeout", "600", "swaylock -f", "before-sleep", "swaylock -f"], privileged = true } },
 
 { type = "show-workspace", name = "1",  output.name = "left"  },
