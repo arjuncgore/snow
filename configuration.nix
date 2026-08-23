@@ -148,9 +148,6 @@
         steam
         nestopia-ue
         osu-lazer-bin
-
-        jemalloc
-        openjdk21
     ];
 
 
@@ -231,35 +228,6 @@
         fsType = "ext4";
         options = [ "nofail" ];
     };
-
-    boot.tmp.useTmpfs = true;
-    boot.tmp.tmpfsSize = "4G";
-
-    systemd.tmpfiles.rules = [
-        "d /tmp/mc 0755 arjungore users -"
-        "d /tmp/mc/1 0755 arjungore users -"
-        "d /tmp/mc/2 0755 arjungore users -"
-        "d /tmp/mc/3 0755 arjungore users -"
-        "d /tmp/mc/4 0755 arjungore users -"
-    ];
-
-    systemd.services.mc-tmpfs-setup = {
-        description = "Set up MCSR tmpfs world folders";
-        after = [ "local-fs.target" ];
-        wantedBy = [ "multi-user.target" ];
-        path = [ pkgs.bash ];
-        serviceConfig = {
-            Type = "oneshot";
-            ExecStart = "/usr/bin/env bash ${./scripts/mcsr-tmpfs.sh}";
-            RemainAfterExit = true;
-        };
-    };
-
-    environment.etc."libinput/local-overrides.quirks".text = ''
-    [Never Debounce]
-    MatchUdevType=mouse
-    ModelBouncingKeys=1
-    '';
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

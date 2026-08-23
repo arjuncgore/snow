@@ -21,30 +21,20 @@
 
     };
 
-    outputs = { self, nixpkgs, jay, zen-browser, mcsr-nixos, ... }: {
+    outputs = { self, nixpkgs, jay, zen-browser, ... }@inputs: {
         nixosConfigurations.snow = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
             modules = [
                 ./configuration.nix
+                ./modules/mcsr.nix
                 jay.nixosModules.default
-                mcsr-nixos.nixosModules.waywall
-                ({ pkgs, ... }:
-                    let
-                        mcsrPkgs = mcsr-nixos.packages.x86_64-linux;
-                    in {
-                        programs.jay.enable = true;
-                        programs.waywall = {
-                            enable = true;
-                            config.source = /home/arjungore/.config/waywall/init.lua;
-                        };
-                        environment.systemPackages = [
-                            zen-browser.packages.x86_64-linux.default
-                            mcsrPkgs.ninjabrain-bot
-                            (pkgs.prismlauncher.override {
-                                jdks = [ mcsrPkgs.graalvm-21 ];
-                            })
-                        ];
-                    })
+                {
+                    programs.jay.enable = true;
+                    environment.systemPackages = [
+                        zen-browser.packages.x86_64-linux.default
+                    ];
+                }
             ];
         };
     };
