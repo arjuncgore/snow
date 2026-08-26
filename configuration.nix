@@ -112,13 +112,6 @@
         wireplumber
         nixd
         alejandra
-        libXtst
-        libXext
-        libX11
-        libxkbcommon
-        libxcb
-        libxt
-        libxinerama
 
         ## Applications
         discordo

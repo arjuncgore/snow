@@ -13,10 +13,21 @@ in
 
     #### System Packages
     environment.systemPackages = [
-        (pkgs.prismlauncher.override { jdks = [ mcsrPkgs.graalvm-21 ]; })
+        (pkgs.prismlauncher.override {
+            jdks = [ mcsrPkgs.graalvm-21 ];
+            additionalLibs = [ 
+                pkgs.libXtst
+                pkgs.libXext
+                pkgs.libX11
+                pkgs.libxkbcommon
+                pkgs.libxcb
+                pkgs.libxt
+                pkgs.libxinerama
+                pkgs.jemalloc
+            ];
+        })
         pkgs.openjdk21
         mcsrPkgs.ninjabrain-bot
-        pkgs.jemalloc
     ];
 
     #### TMPFS
