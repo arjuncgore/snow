@@ -83,6 +83,9 @@
         ripgrep
         fd
         playerctl
+        libnotify
+        fzf
+        lazygit
 
         ## Desktop Environment
         wezterm
