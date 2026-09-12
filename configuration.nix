@@ -52,7 +52,7 @@
         isNormalUser = true;
         shell = pkgs.zsh;
         description = "Arjun Gore";
-        extraGroups = [ "networkmanager" "wheel" "seat" "audio" ];
+        extraGroups = [ "networkmanager" "wheel" "seat" "audio" "input" ];
         packages = with pkgs; [];
     };
 
@@ -130,6 +130,11 @@
         kdePackages.kdenlive
         (wrapOBS { plugins = with obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
 
+        ## School Specific
+        zoom-us
+        slack
+        todoist-electron
+
         ## Programming
         gcc
         rustc
@@ -144,6 +149,7 @@
         steam
         nestopia-ue
         osu-lazer-bin
+        dolphin-emu
     ];
 
 
@@ -224,6 +230,18 @@
         fsType = "ext4";
         options = [ "nofail" ];
     };
+
+
+    #### Gaming Stuff
+    hardware.steam-hardware.enable = true;
+
+
+    #### Bluetooth
+    hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+    };
+    services.blueman.enable = true;
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
