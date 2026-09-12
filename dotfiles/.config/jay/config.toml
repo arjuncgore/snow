@@ -152,6 +152,7 @@ logo-F12                = { type = "exec", exec = { prog = "playerctl", args = [
 
 XF86AudioRaiseVolume  = { type = "exec", exec = ["wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "0.05+"] }
 XF86AudioLowerVolume  = { type = "exec", exec = ["wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "0.05-"] }
+XF86AudioMute         = { type = "exec", exec = ["wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle"] }
 logo-m                = { type = "exec", exec = { prog = "bash", args = ["-lc", 'if (( $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -c MUTED) == 1 )); then wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0 && notify-send unmuted; else wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 1 && notify-send muted; fi'] } }
 
 
