@@ -53,5 +53,8 @@ clone() {
   git clone "git@github.com:arjuncgore/$1.git"
 }
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# nix rebuild
+alias nrs="sudo nixos-rebuild switch --flake ~/projects/snow --impure"
+
+# Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
