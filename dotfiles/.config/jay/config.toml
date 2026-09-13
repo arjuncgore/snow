@@ -146,9 +146,12 @@ logo-shift-s            = { type = "exec", exec = { prog = "bash", args = ["-lc"
 logo-shift-p            = { type = "exec", exec = { prog = "bash", args = ["-lc", 'wayfreeze & PID=$!; sleep 0.1; grim -g "$(slurp)" - | wl-copy; kill "$PID" 2>/dev/null'], privileged = true } }
 logo-shift-o            = { type = "exec", exec = { prog = "bash", args = ["-lc", 'wayfreeze & PID=$!; sleep 0.1; grim -g "$(slurp)" - | swappy -f -; kill "$PID" 2>/dev/null'], privileged = true } }
 
-logo-F10                = { type = "exec", exec = { prog = "playerctl", args = ["-p", "spotify", "previous"], privileged = true }}
-logo-F11                = { type = "exec", exec = { prog = "playerctl", args = ["-p", "spotify", "play-pause"], privileged = true }}
-logo-F12                = { type = "exec", exec = { prog = "playerctl", args = ["-p", "spotify", "next"], privileged = true }}
+logo-F10                = { type = "exec", exec = { prog = "playerctl", args = ["-i", "spotify", "previous"], privileged = true }}
+logo-F11                = { type = "exec", exec = { prog = "playerctl", args = ["-i", "spotify", "play-pause"], privileged = true }}
+logo-F12                = { type = "exec", exec = { prog = "playerctl", args = ["-i", "spotify", "next"], privileged = true }}
+logo-shift-F10          = { type = "exec", exec = { prog = "playerctl", args = ["-p", "spotify", "previous"], privileged = true }}
+logo-shift-F11          = { type = "exec", exec = { prog = "playerctl", args = ["-p", "spotify", "play-pause"], privileged = true }}
+logo-shift-F12          = { type = "exec", exec = { prog = "playerctl", args = ["-p", "spotify", "next"], privileged = true }}
 
 XF86AudioRaiseVolume  = { type = "exec", exec = ["wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "0.05+"] }
 XF86AudioLowerVolume  = { type = "exec", exec = ["wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "0.05-"] }
