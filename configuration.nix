@@ -150,6 +150,7 @@
         nestopia-ue
         osu-lazer-bin
         dolphin-emu
+        lunar-client
     ];
 
 
