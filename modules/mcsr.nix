@@ -28,6 +28,7 @@ in
         })
         pkgs.openjdk21
         mcsrPkgs.ninjabrain-bot
+        inputs.ninjabrain-bot-xwayland.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     #### TMPFS

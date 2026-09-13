@@ -19,6 +19,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        ninjabrain-bot-xwayland = {
+            url = "github:Ktrompfl/ninjabrain-bot-xwayland";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
     outputs = { self, nixpkgs, jay, zen-browser, ... }@inputs: {

@@ -55,6 +55,26 @@
         "url": "https://git.uku3lig.net/uku/mcsr-nixos/archive/main.tar.gz"
       }
     },
+    "ninjabrain-bot-xwayland": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788297689,
+        "narHash": "sha256-75wTkwWsiKwY8CteeO+wBe9LQ4FEaprzS3EzJKEiWhw=",
+        "owner": "Ktrompfl",
+        "repo": "ninjabrain-bot-xwayland",
+        "rev": "81b578d1d720a9610da17dc5b49c245e6cb20971",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Ktrompfl",
+        "repo": "ninjabrain-bot-xwayland",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1787736819,
@@ -75,6 +95,7 @@
       "inputs": {
         "jay": "jay",
         "mcsr-nixos": "mcsr-nixos",
+        "ninjabrain-bot-xwayland": "ninjabrain-bot-xwayland",
         "nixpkgs": "nixpkgs",
         "zen-browser": "zen-browser"
       }
