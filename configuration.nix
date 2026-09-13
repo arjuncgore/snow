@@ -151,6 +151,7 @@
         osu-lazer-bin
         dolphin-emu
         lunar-client
+        wheelwizard
     ];
 
 
