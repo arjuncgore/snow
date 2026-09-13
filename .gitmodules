@@ -1,0 +1,3 @@
+[submodule "dotfiles/.config/waywall"]
+	path = dotfiles/.config/waywall
+	url = git@github.com:arjuncgore/waywall_config.git
