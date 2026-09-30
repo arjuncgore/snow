@@ -86,8 +86,11 @@
         libnotify
         fzf
         lazygit
+        p7zip
+        jq
 
         ## Desktop Environment
+        # jay
         wezterm
         swaylock-effects
         wofi
@@ -152,6 +155,11 @@
         dolphin-emu
         lunar-client
         wheelwizard
+
+        wineWow64Packages.stable
+
+        ## Music
+        musescore
     ];
 
 
