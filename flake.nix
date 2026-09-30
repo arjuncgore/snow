@@ -24,6 +24,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        hjem = {
+            url = "github:feel-co/hjem";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
     outputs = { self, nixpkgs, jay, zen-browser, ... }@inputs: {
@@ -33,6 +38,7 @@
             modules = [
                 ./configuration.nix
                 ./modules/mcsr.nix
+                ./modules/hjem.nix
                 jay.nixosModules.default
                 {
                     programs.jay.enable = true;
