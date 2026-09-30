@@ -55,6 +55,7 @@ clone() {
 
 # nix rebuild
 alias nrs="sudo nixos-rebuild switch --flake ~/projects/snow --impure"
+alias nfu="nix flake update"
 
 # Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
