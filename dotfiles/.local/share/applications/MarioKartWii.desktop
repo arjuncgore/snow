@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Mario Kart Wii
+Keywords=mario;mkwii
+Icon=wine
+Exec=wine /home/arjungore/storage/repos/Wiicompiled/native-build/WiiCompiled.exe
