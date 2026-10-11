@@ -154,7 +154,6 @@
         osu-lazer-bin
         dolphin-emu
         lunar-client
-        wheelwizard
 
         wineWow64Packages.stable
 
@@ -244,6 +243,11 @@
 
     #### Gaming Stuff
     hardware.steam-hardware.enable = true;
+    services.flatpak.enable = true;
+    programs.appimage = {
+        enable = true;
+        binfmt = true;
+    };
 
 
     #### Bluetooth
