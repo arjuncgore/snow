@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "bedrock-on-linux": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790799528,
+        "narHash": "sha256-g8ROZ2SmCGyGMqVk6u95jo7knSHBkAsqnYzx/HpPBWI=",
+        "owner": "Wyze3306",
+        "repo": "BedrockOnLinux",
+        "rev": "49f26c59a11202790bd50d4ec319b8dc66150e0b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Wyze3306",
+        "repo": "BedrockOnLinux",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1788465171,
@@ -93,6 +113,7 @@
     },
     "root": {
       "inputs": {
+        "bedrock-on-linux": "bedrock-on-linux",
         "jay": "jay",
         "mcsr-nixos": "mcsr-nixos",
         "ninjabrain-bot-xwayland": "ninjabrain-bot-xwayland",

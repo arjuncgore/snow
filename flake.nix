@@ -24,9 +24,14 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        bedrock-on-linux = {
+            url = "github:Wyze3306/BedrockOnLinux";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
-    outputs = { self, nixpkgs, jay, zen-browser, ... }@inputs: {
+    outputs = { self, nixpkgs, jay, zen-browser, bedrock-on-linux, ... }@inputs: {
         nixosConfigurations.snow = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
@@ -38,6 +43,7 @@
                     programs.jay.enable = true;
                     environment.systemPackages = [
                         zen-browser.packages.x86_64-linux.default
+                        bedrock-on-linux.packages.x86_64-linux.default
                     ];
                 }
             ];
