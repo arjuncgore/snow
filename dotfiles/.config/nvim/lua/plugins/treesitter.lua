@@ -32,6 +32,7 @@ return {
                 "glimmer",
                 "rust",
                 "nix",
+                "kotlin",
             },
             auto_install = false,
         })
