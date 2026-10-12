@@ -2,15 +2,13 @@
 
 let
     mcsrPkgs = inputs.mcsr-nixos.packages.x86_64-linux;
+
+    waywall = pkgs.waywall.overrideAttrs {
+        version = "unstable";
+        src = inputs.waywall;
+    };
 in 
     {
-    #### Waywall
-    imports = [ inputs.mcsr-nixos.nixosModules.waywall ];
-    programs.waywall = {
-        enable = true;
-        config.source = /home/arjungore/.config/waywall/init.lua;
-    };
-
     #### System Packages
     environment.systemPackages = [
         (pkgs.prismlauncher.override {
@@ -26,6 +24,7 @@ in
                 pkgs.jemalloc
             ];
         })
+        waywall
         pkgs.jemalloc
         pkgs.openjdk21
         mcsrPkgs.ninjabrain-bot

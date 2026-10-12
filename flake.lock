@@ -118,6 +118,7 @@
         "mcsr-nixos": "mcsr-nixos",
         "ninjabrain-bot-xwayland": "ninjabrain-bot-xwayland",
         "nixpkgs": "nixpkgs",
+        "waywall": "waywall",
         "zen-browser": "zen-browser"
       }
     },
@@ -139,6 +140,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "waywall": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791773755,
+        "narHash": "sha256-7lOd59Lym13p//GthLIQCXX2t59QYaTjccLI1Dzh1u4=",
+        "owner": "tesselslate",
+        "repo": "waywall",
+        "rev": "0265dc4e48f579706fcf651f2db8d9781c10ddef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tesselslate",
+        "repo": "waywall",
         "type": "github"
       }
     },

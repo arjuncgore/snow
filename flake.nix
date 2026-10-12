@@ -29,6 +29,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        waywall = {
+            url = "github:tesselslate/waywall";
+            flake = false;
+        };
+
     };
 
     outputs = { self, nixpkgs, jay, zen-browser, bedrock-on-linux, ... }@inputs: {
