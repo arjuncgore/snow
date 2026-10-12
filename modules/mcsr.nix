@@ -6,6 +6,12 @@ let
     waywall = pkgs.waywall.overrideAttrs {
         version = "unstable";
         src = inputs.waywall;
+        # src = pkgs.fetchFromGitHub {
+        #     owner = "tesselslate";
+        #     repo = "waywall";
+        #     rev = "3e144aa9fce0724758ba33b14b82c6bba9255160";
+        #     hash = "";
+        # };
     };
 in 
     {

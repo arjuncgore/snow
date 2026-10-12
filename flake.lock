@@ -146,11 +146,11 @@
     "waywall": {
       "flake": false,
       "locked": {
-        "lastModified": 1791773755,
-        "narHash": "sha256-7lOd59Lym13p//GthLIQCXX2t59QYaTjccLI1Dzh1u4=",
+        "lastModified": 1791775193,
+        "narHash": "sha256-mBm4C0t809NWI0/HR53eQGuGSGj7Jrgv9sDh36kxvqM=",
         "owner": "tesselslate",
         "repo": "waywall",
-        "rev": "0265dc4e48f579706fcf651f2db8d9781c10ddef",
+        "rev": "300868207819618025d71ce98b03972868adafd5",
         "type": "github"
       },
       "original": {
