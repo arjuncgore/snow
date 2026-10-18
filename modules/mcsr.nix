@@ -13,8 +13,32 @@ let
         #     hash = "";
         # };
     };
+
+
+    ## Helper for tmpfs
+    mkInstance = name: {
+        saves = ".local/share/PrismLauncher/instances/${name}/minecraft/saves";
+        size = "1G";
+        tmpfs = true;
+        user = "arjungore";
+        worlds = [
+            "mcsr/worlds/ZZ_Bastion"
+            "mcsr/worlds/ZZ_Blaze"
+            "mcsr/worlds/ZZ_Crafting"
+            "mcsr/worlds/ZZ_Portal"
+            "mcsr/worlds/ZZ_Preemptive"
+            "mcsr/worlds/ZZ_Zero"
+            "mcsr/worlds/ZZ_SearchCrafting"
+            "mcsr/worlds/ZZ_MCSR"
+        ];
+    };
+
 in 
     {
+    imports = [
+        inputs.mcsr-nixos-jude.nixosModules.tmpfs-symlink
+    ];
+
     #### System Packages
     environment.systemPackages = [
         (pkgs.prismlauncher.override {
@@ -43,29 +67,10 @@ in
     ];
 
     #### TMPFS
-    systemd.services.mc-tmpfs-setup = {
-        description = "Set up MCSR tmpfs world folders";
-        after = [ "local-fs.target" ];
-        wantedBy = [ "multi-user.target" ];
-        path = [ pkgs.bash ];
-        serviceConfig = {
-            Type = "oneshot";
-            ExecStart = "/usr/bin/env bash ${../scripts/mcsr-tmpfs.sh}";
-            RemainAfterExit = true;
-        };
+    services.tmpfs-symlink = {
+        enable = true;
+        instances = map mkInstance [ "RSG" "Icarus" "Ranked" "SSG_Vine_Seed" ];
     };
-
-    boot.tmp.useTmpfs = true;
-    boot.tmp.tmpfsSize = "4G";
-
-    systemd.tmpfiles.rules = [
-        "d /tmp/mc 0755 arjungore users -"
-        "d /tmp/mc/1 0755 arjungore users -"
-        "d /tmp/mc/2 0755 arjungore users -"
-        "d /tmp/mc/3 0755 arjungore users -"
-        "d /tmp/mc/4 0755 arjungore users -"
-    ];
-
 
     #### Debounce Override
     environment.etc."libinput/local-overrides.quirks".text = ''

@@ -19,6 +19,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        mcsr-nixos-jude = {
+            url = "git+https://git.uku3lig.net/luvvlyjude/mcsr-nixos?ref=tmpfs-symlink";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         ninjabrain-bot-xwayland = {
             url = "github:Ktrompfl/ninjabrain-bot-xwayland";
             inputs.nixpkgs.follows = "nixpkgs";

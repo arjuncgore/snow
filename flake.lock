@@ -75,6 +75,27 @@
         "url": "https://git.uku3lig.net/uku/mcsr-nixos/archive/main.tar.gz"
       }
     },
+    "mcsr-nixos-jude": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789000768,
+        "narHash": "sha256-Fh7UM/U4DURpxIO8gpIHM7h8JWridPLayNblrjfxAGg=",
+        "ref": "tmpfs-symlink",
+        "rev": "1f830fe170860c6855d3e22e465b8dfd4b22168b",
+        "revCount": 51,
+        "type": "git",
+        "url": "https://git.uku3lig.net/luvvlyjude/mcsr-nixos"
+      },
+      "original": {
+        "ref": "tmpfs-symlink",
+        "type": "git",
+        "url": "https://git.uku3lig.net/luvvlyjude/mcsr-nixos"
+      }
+    },
     "ninjabrain-bot-xwayland": {
       "inputs": {
         "nixpkgs": [
@@ -116,6 +137,7 @@
         "bedrock-on-linux": "bedrock-on-linux",
         "jay": "jay",
         "mcsr-nixos": "mcsr-nixos",
+        "mcsr-nixos-jude": "mcsr-nixos-jude",
         "ninjabrain-bot-xwayland": "ninjabrain-bot-xwayland",
         "nixpkgs": "nixpkgs",
         "waywall": "waywall",
