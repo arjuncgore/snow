@@ -64,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789149434,
-        "narHash": "sha256-U42QlbfKk9TkbXu/aJjgjeeB5excabGPQzn+YmDZvtk=",
-        "rev": "bcadcea41eefbbd1a868fe1d78a22bf2913eae65",
+        "lastModified": 1792105272,
+        "narHash": "sha256-SujqOuDce1bY3VRoJn+ES1J3eZz+duJ1Ge0UDOJrDHM=",
+        "rev": "5f7b51972daa843429f04fbd26c73f8defa8ee8e",
         "type": "tarball",
-        "url": "https://git.uku3lig.net/api/v1/repos/uku/mcsr-nixos/archive/bcadcea41eefbbd1a868fe1d78a22bf2913eae65.tar.gz"
+        "url": "https://git.uku3lig.net/api/v1/repos/uku/mcsr-nixos/archive/5f7b51972daa843429f04fbd26c73f8defa8ee8e.tar.gz"
       },
       "original": {
         "type": "tarball",

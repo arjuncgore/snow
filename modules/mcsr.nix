@@ -31,10 +31,15 @@ in
             ];
         })
         waywall
+
         pkgs.jemalloc
         pkgs.openjdk21
-        mcsrPkgs.ninjabrain-bot
+
         inputs.ninjabrain-bot-xwayland.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+        mcsrPkgs.ninjabrain-bot
+        mcsrPkgs.paceman-tracker
+        mcsrPkgs.obs-cli
     ];
 
     #### TMPFS
