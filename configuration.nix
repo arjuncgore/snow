@@ -137,6 +137,17 @@
         zoom-us
         slack
         todoist-electron
+        (pkgs.python3.withPackages (ps: with ps; [
+            jupyter
+            ipykernel
+            numpy
+            pandas
+            matplotlib
+            scipy
+            scikit-learn
+            ipykernel
+            pip
+        ]))
 
         ## Programming
         gcc
