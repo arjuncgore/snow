@@ -52,6 +52,8 @@ in
                 pkgs.libxt
                 pkgs.libxinerama
                 pkgs.jemalloc
+                pkgs.libxrender
+                pkgs.libxi
             ];
         })
         waywall
@@ -78,5 +80,27 @@ in
     MatchUdevType=mouse
     ModelBouncingKeys=1
     '';
+
+    #### Other Remaps
+    services.kanata = {
+        enable = true;
+        keyboards.default = {
+            devices = [
+                "/dev/input/by-id/usb-ROYUAN_RT75_Gaming_Keyboard-event-kbd"
+                "/dev/input/by-id/usb-Turtle_Beach_Burst_II_Air_dongle__Null_-if01-event-mouse"
+            ];
+            extraDefCfg = "process-unmapped-keys yes";
+            config = ''
+                (defsrc
+                    mbck mwu mwd)
+
+                (deflayer base
+                    (multi mbck (layer-while-held mb4)) mwu mwd)
+
+                (deflayer mb4
+                    _ . ,)
+            '';
+        };
+    };
 
 }
