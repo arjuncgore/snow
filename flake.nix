@@ -39,12 +39,20 @@
             flake = false;
         };
 
+        nixpkgs-steamrun.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
     };
 
     outputs = { self, nixpkgs, jay, zen-browser, bedrock-on-linux, ... }@inputs: {
         nixosConfigurations.snow = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
+            specialArgs = {
+                inherit inputs;
+                pkgs-steamrun = import inputs.nixpkgs-steamrun {
+                    system = "x86_64-linux";
+                    config.allowUnfree = true;
+                };
+            };
             modules = [
                 ./configuration.nix
                 ./modules/mcsr.nix

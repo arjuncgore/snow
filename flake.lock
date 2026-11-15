@@ -132,6 +132,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-steamrun": {
+      "locked": {
+        "lastModified": 1794537146,
+        "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "bedrock-on-linux": "bedrock-on-linux",
@@ -140,6 +156,7 @@
         "mcsr-nixos-jude": "mcsr-nixos-jude",
         "ninjabrain-bot-xwayland": "ninjabrain-bot-xwayland",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-steamrun": "nixpkgs-steamrun",
         "waywall": "waywall",
         "zen-browser": "zen-browser"
       }

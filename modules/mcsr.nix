@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, pkgs-steamrun, inputs, ... }:
 
 let
     mcsrPkgs = inputs.mcsr-nixos.packages.x86_64-linux;
@@ -66,6 +66,8 @@ in
         mcsrPkgs.ninjabrain-bot
         mcsrPkgs.paceman-tracker
         mcsrPkgs.obs-cli
+
+        pkgs-steamrun.steam-run
     ];
 
     #### TMPFS
